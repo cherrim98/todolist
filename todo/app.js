@@ -1,36 +1,36 @@
-angular.module("todoApp", [])
-.controller("TodoListController", function($scope) {
-  var todoList = this;
-  todoList.todoItems = [
-    { name: "*placeholder*", done: false },
-    { name: "*placeholder*", done: false },
-    { name: "*placeholder*", done: false },
-    { name: "*placeholder*", done: false }
+angular.module("todoApp", []) <!-- 
+.controller("TodoListController", function($scope) { //function
+  var todoList = this; 
+  todoList.todoItems = [ //items list
+    { name: "*placeholder*", done: false }, //names of the items from start
+    { name: "*placeholder*", done: false }, //names of the items from start
+    { name: "*placeholder*", done: false }, //names of the items from start
+    { name: "*placeholder*", done: false } //names of the items from start
   ]
 
-  todoList.addTodo = function() {
-    todoList.todoItems.push(
-      { name: todoList.todoText }
+  todoList.addTodo = function() { //add button
+    todoList.todoItems.push( //make sure add button works
+      { name: todoList.todoText } //text "add"
     )
-    todoList.todoText = "";
+    todoList.todoText = ""; //end
   };
 
-  todoList.remove = function() {
-    var oldTodos = todoList.todoItems;
-    todoList.todoItems = [];
-    angular.forEach(oldTodos, function(todo) {
-      if(!todo.done) todoList.todoItems.push(todo);
+  todoList.remove = function() { //remove button
+    var oldTodos = todoList.todoItems; // make sure button works
+    todoList.todoItems = []; // list of items
+    angular.forEach(oldTodos, function(todo) { //check if checkboxes are checked
+      if(!todo.done) todoList.todoItems.push(todo); //text "delete"
     })
-    todoList.todoItems
+    todoList.todoItems //end
   };
 
-  todoList.remaining = function() {
+  todoList.remaining = function() { // counter view
     var notCompletedCount = 0;
     angular.forEach(todoList.todoItems, function(todo) {
       notCompletedCount += todo.done ? 0 : 1;
-    })
+    }) //end
 
-    return notCompletedCount
+    return notCompletedCount // counter
   }
 
 
